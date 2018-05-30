@@ -12,7 +12,6 @@ export default {
 
 <style scoped>
     #preview{
-        border: 1px solid green;
         height: 100%;
         flex: 1
     }

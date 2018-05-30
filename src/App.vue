@@ -36,6 +36,6 @@ export default {
 main{
   display: flex;
   flex: 1;
-  
+  padding-top: 16px;
 }
 </style>
