@@ -2,6 +2,7 @@
   <div id="topbar">
       <div>logo</div>
       <div>userInfo</div>
+      
   </div>
 </template>
 
