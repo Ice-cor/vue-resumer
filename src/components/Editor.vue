@@ -12,8 +12,28 @@
             </ol>
         </nav>
         <ol>
-            <li v-show="currentTarget ===0">1</li>
-            <li v-show="currentTarget ===1">2</li>
+            <li v-show="currentTarget ===0">
+               <FormProfile v-bind:profile="profile"/>
+               
+            </li>
+            <li v-show="currentTarget ===1">
+                <h2>联系方式</h2>
+                <el-form :label-position="'left'" label-width="80px" :model="contactInfo">
+                    <el-form-item label="电话">
+                        <el-input v-model="contactInfo.phone"></el-input>
+                    </el-form-item>
+                    <el-form-item label="邮箱">
+                        <el-input v-model="contactInfo.email"></el-input>
+                    </el-form-item>
+                    <el-form-item label="github">
+                        <el-input v-model="contactInfo.github"></el-input>
+                    </el-form-item>
+                    <el-form-item label="个人主页">
+                        <el-input v-model="contactInfo.homePage"></el-input>
+                    </el-form-item>
+                    <el-button type="primary">提交</el-button>
+                </el-form>               
+            </li>
             <li v-show="currentTarget ===2">3</li>
             <li v-show="currentTarget ===3">4</li>
             <li v-show="currentTarget ===4">5</li>
@@ -23,8 +43,11 @@
 </template>
 
 <script>
+import FormProfile from'./editor/formProfile'
+
 export default {
   name: "editor",
+  components:{FormProfile},
   data() {
     return {
       icons: [
@@ -35,7 +58,21 @@ export default {
         "#icon-lights",
         "#icon-info"
       ],
-      currentTarget: 0
+      currentTarget: 0,
+      profile:{
+          name: '',
+          jop: '',
+          headPortrait: ''
+      },
+      contactInfo:{
+          phone: '',
+          email: '',
+          github: '',
+          homePage: ''
+      },
+      project:[
+          {}
+      ]
     };
   },
   methods: {
@@ -46,7 +83,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style  lang="scss">
 #editor {
   height: 100%;
   width: 40em;
@@ -66,6 +103,7 @@ export default {
     }
   }
 }
+
 .icon {
   width: 32px;
   height: 32px;
@@ -73,4 +111,29 @@ export default {
   fill: rgb(200, 200, 200);
   overflow: hidden;
 }
+
+/*图片上传样式*/
+  .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
 </style>

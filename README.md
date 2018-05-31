@@ -1,21 +1,8 @@
 # vue-resumer
 
-> A Vue.js project
+## 将要实现
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+1.tab内容可以禁止
+2.换肤
+3.能力值数据可视化（引入库）
+4.
