@@ -13,28 +13,14 @@
         </nav>
         <ol>
             <li v-show="currentTarget ===0">
-               <FormProfile v-bind:profile="profile"/>
-               
+               <form-profile v-bind:profile="profile"/>
             </li>
             <li v-show="currentTarget ===1">
-                <h2>联系方式</h2>
-                <el-form :label-position="'left'" label-width="80px" :model="contactInfo">
-                    <el-form-item label="电话">
-                        <el-input v-model="contactInfo.phone"></el-input>
-                    </el-form-item>
-                    <el-form-item label="邮箱">
-                        <el-input v-model="contactInfo.email"></el-input>
-                    </el-form-item>
-                    <el-form-item label="github">
-                        <el-input v-model="contactInfo.github"></el-input>
-                    </el-form-item>
-                    <el-form-item label="个人主页">
-                        <el-input v-model="contactInfo.homePage"></el-input>
-                    </el-form-item>
-                    <el-button type="primary">提交</el-button>
-                </el-form>               
+                <form-contact-info v-bind:contactInfo="contactInfo"/>
             </li>
-            <li v-show="currentTarget ===2">3</li>
+            <li v-show="currentTarget ===2">
+                <project v-bind:projectInfo = "projectInfo"/>
+            </li>
             <li v-show="currentTarget ===3">4</li>
             <li v-show="currentTarget ===4">5</li>
             <li v-show="currentTarget ===5">6</li>
@@ -44,10 +30,13 @@
 
 <script>
 import FormProfile from'./editor/formProfile'
+import FormContactInfo from'./editor/formContactInfo'
+import Project from'./editor/project'
+
 
 export default {
   name: "editor",
-  components:{FormProfile},
+  components:{FormProfile,FormContactInfo,Project},
   data() {
     return {
       icons: [
@@ -70,14 +59,14 @@ export default {
           github: '',
           homePage: ''
       },
-      project:[
-          {}
+      projectInfo:[
+          {name: '',link: '', content: ''}
       ]
     };
   },
   methods: {
-    log(e) {
-      console.log(e);
+    addItems(){
+        
     }
   }
 };
