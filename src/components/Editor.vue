@@ -16,10 +16,24 @@
                <form-profile v-bind:profile="profile"/>
             </li>
             <li v-show="currentTarget ===1">
-                <form-contact-info v-bind:contactInfo="contactInfo"/>
+                <project 
+                    v-bind:items = "contactInfo" 
+                    v-bind:option="{
+                        title: '联系方式',
+                        addAndDel: false,
+                        keys:{phone: '电话号码',email: '邮箱',github: 'github',homePage:'个人主页'}
+                        }"
+                />
             </li>
             <li v-show="currentTarget ===2">
-                <project v-bind:projectInfo = "projectInfo"/>
+                <project 
+                    v-bind:items = "projectInfo" 
+                    v-bind:option="{
+                        title: '个人项目',
+                        addAndDel: true,
+                        keys:{name: '项目名称',link: '链接',content: '项目内容'}
+                        }"
+                />
             </li>
             <li v-show="currentTarget ===3">4</li>
             <li v-show="currentTarget ===4">5</li>
@@ -53,21 +67,16 @@ export default {
           jop: '',
           headPortrait: ''
       },
-      contactInfo:{
+      contactInfo:[{
           phone: '',
           email: '',
           github: '',
           homePage: ''
-      },
+      }],
       projectInfo:[
           {name: '',link: '', content: ''}
       ]
     };
-  },
-  methods: {
-    addItems(){
-        
-    }
   }
 };
 </script>

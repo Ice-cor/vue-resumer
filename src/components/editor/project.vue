@@ -1,19 +1,14 @@
 <template>
     <div>
+        <h2>{{option.title}}</h2>
         <el-form :label-position="'left'" label-width="80px" >
-            <div v-for="(project,index) in projectInfo">
-                <el-form-item label="项目名称">
-                    <el-input v-model="project.name"></el-input>
+            <div v-for="(item,index) in items" :key="index">
+                <el-form-item v-for="key in keys" v-bind:label="option.keys[key] || key" :key="key">
+                    <el-input v-model="item.name"></el-input>
                 </el-form-item>
-                <el-form-item label="链接">
-                    <el-input v-model="project.link"></el-input>
-                </el-form-item>
-                <el-form-item label="项目介绍">
-                    <el-input v-model="project.content"></el-input>
-                </el-form-item>
-                <el-button type="danger" @click="removeProject(index)">删除</el-button>
+                <el-button type="danger" @click="removeProject(index)" v-if="option.addAndDel" v-bind:disabled="active">删除</el-button>
             </div>
-            <el-button type="primary" @click="addProject">添加</el-button>
+            <el-button type="primary" @click="addProject" v-if="option.addAndDel">添加</el-button>
             <el-button type="primary">提交</el-button>
         </el-form>
     </div>
@@ -21,13 +16,35 @@
 
 <script>
 export default {
-  props: ["projectInfo"],
+  props: ["items",'option'],
+  data(){
+      return{
+          
+      }
+  },
+  computed:{
+      keys(){
+          return Object.keys(this.items[0])
+      },
+      active(){
+          if(this.items.length<=1){
+              return true
+          }else{
+              return false
+          }
+      }
+  },
   methods: {
       addProject(){
-          this.projectInfo.push( {name: '',link: '', content: ''})
+          const empty = {}
+          this.keys.map((e)=>{
+              empty[e] = ''
+          })
+          this.items.push(empty)
+
       },
       removeProject(index){
-          this.projectInfo.splice(index,1)
+            this.items.splice(index,1)
       }
   }
 };
