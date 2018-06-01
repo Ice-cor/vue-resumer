@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     #topbar{
         padding: 16px;
         border: 1px solid blue;
