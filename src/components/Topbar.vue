@@ -12,7 +12,7 @@
             </el-badge>
           </div>
           <div class="row">
-            <el-button type="primary">预览</el-button>
+            <el-button type="primary" @click="preview">预览</el-button>
             <el-button type="success">下载</el-button>
           </div>
       </div>
@@ -22,7 +22,12 @@
 
 <script>
 export default {
-  name: 'topbar'
+  name: 'topbar',
+  methods:{
+      preview(){
+          
+      }
+  }
 }
 </script>
 
