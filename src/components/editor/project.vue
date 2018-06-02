@@ -4,7 +4,7 @@
         <el-form :label-position="'left'" label-width="80px" >
             <div v-for="(item,index) in items" :key="index">
                 <el-form-item v-for="key in keys" v-bind:label="option.keys[key] || key" :key="key">
-                    <el-input v-model="item.name"></el-input>
+                    <el-input v-model="item[key]"></el-input>
                 </el-form-item>
                 <el-button type="danger" @click="removeProject(index)" v-if="option.addAndDel" v-bind:disabled="active">删除</el-button>
             </div>
